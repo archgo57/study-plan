@@ -1,15 +1,13 @@
-# My Study Plan ⭐
+# My Study Plan V4
 
-Updated mobile-first GitHub Pages planner.
+Fresh rebuild from the supplied school portions.
 
-### New in V3
-- Different soft background colour for each subject.
-- Select a single day to show that day's plan.
-- **Check by Subject**: choose Hindi, Maths, Science, SSC, English, Kannada, Computer, or All.
-- Subject-specific completion count and progress percentage.
-- Subject task list with checkboxes.
-- Previous / Next / Today day navigation.
-- Progress and checkmarks saved in the browser.
-- Responsive mobile layout.
-
-Upload `index.html` and `assets/` to the root of your GitHub Pages repository.
+Scope:
+- Hindi = 2L only
+- Kannada = 3L only
+- Aug 29 to Sep 20
+- Every listed Hindi 2L literature/grammar/reading/writing item is explicitly scheduled
+- Every listed Maths, Science, SSC and English portion is explicitly scheduled in this first-round plan
+- Day selector + subject status selector
+- Learn / Practice / Recall / Test are explicitly stated
+- Checkboxes and progress saved in browser

@@ -1,270 +1,63 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fff8f9">
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>My Study Plan ⭐</title>
 <style>
-:root{--ink:#30283a;--muted:#776f7b;--border:#eadfe4;--white:#fff;--pink:#f65f78;--pink-bg:#fff0f3;--math:#168b63;--math-bg:#edf9f2;--science:#7359b6;--science-bg:#f3efff;--ssc:#d87921;--ssc-bg:#fff4e8;--english:#b45b2c;--english-bg:#fff3e9;--kannada:#357d55;--kannada-bg:#eef9ef;--computer:#386a9b;--computer-bg:#eef5fb;--class:#316acb;--class-bg:#eef5ff;--play:#c98600;--play-bg:#fff8df;--shadow:0 10px 30px rgba(68,47,67,.08)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fffafa 0,#fff 55%,#fff9fb 100%)}button,input{font:inherit}button{cursor:pointer}.container{width:min(1120px,calc(100% - 28px));margin:auto}
-header{position:sticky;top:0;z-index:30;background:rgba(255,252,252,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.nav{height:64px;display:flex;align-items:center;justify-content:space-between}.logo{font:italic 27px Georgia,serif;color:#403547;text-decoration:none}.logo span{font-style:normal}nav{display:flex;gap:5px}nav button{border:0;background:transparent;color:var(--muted);padding:9px 12px;border-radius:999px}nav button:hover{background:#fff0f3;color:var(--pink)}
-.hero{margin:20px 0;border:1px solid var(--border);border-radius:25px;overflow:hidden;background:#fff;box-shadow:var(--shadow);position:relative}.hero img{display:block;width:100%;height:390px;object-fit:cover;object-position:center}.hero-copy{position:absolute;left:30px;top:50%;transform:translateY(-50%);max-width:410px;background:rgba(255,255,255,.88);padding:22px 24px;border-radius:20px;backdrop-filter:blur(8px)}.hero-copy h1{margin:0 0 8px;font:italic 43px Georgia,serif}.hero-copy p{margin:0;color:#665e69;font-size:16px}.hero-copy .spark{color:var(--pink)}
-.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0 24px}.summary-card{border:1px solid var(--border);border-radius:17px;padding:15px;background:#fff;box-shadow:0 7px 20px rgba(68,47,67,.05)}.summary-card h3{margin:0 0 5px;font-size:14px}.summary-card p{margin:0;color:var(--muted);font-size:13px}.pink{background:var(--pink-bg)}.gold{background:#fff8e2}.green{background:var(--math-bg)}.blue{background:#eef5ff}
-.section-title{display:flex;align-items:center;gap:10px;margin:30px 0 13px;font:italic 27px Georgia,serif}.section-title:after{content:"";height:1px;background:var(--border);flex:1}
-.day-picker{background:#fff;border:1px solid var(--border);border-radius:20px;padding:14px;box-shadow:var(--shadow)}.picker-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.picker-title{font-weight:800}.picker-actions{display:flex;gap:7px}.icon-btn{border:1px solid var(--border);background:#fff;border-radius:11px;width:38px;height:38px;color:#655a68}.today-btn{border:1px solid #ff9dad;background:#fff1f4;color:#c5425a;border-radius:11px;padding:8px 12px;font-weight:800}.day-scroller{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 5px;scrollbar-width:thin}.day-btn{flex:0 0 78px;border:1px solid var(--border);background:#fff;border-radius:14px;padding:9px 7px;text-align:center;color:var(--muted);transition:.18s}.day-btn:hover{border-color:#f1a0ad}.day-btn.selected{border:2px solid var(--pink);background:var(--pink-bg);color:#7d3949}.day-btn .m{font-size:10px;font-weight:700}.day-btn .n{font-size:22px;font-weight:900;line-height:1.05;color:var(--ink)}.day-btn .w{font-size:11px;font-weight:700}.day-btn.selected .n{color:var(--pink)}
-.selected-date{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 12px}.selected-date h2{margin:0;font-size:22px}.day-layout{display:grid;grid-template-columns:1.55fr .75fr;gap:16px}.plan-card,.side-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:17px;box-shadow:var(--shadow)}
-.task{display:grid;grid-template-columns:92px 1fr 24px;gap:11px;align-items:center;padding:12px 10px;border-radius:13px;margin:8px 0;border:1px solid transparent}.task .time{font-size:11px;font-weight:700;line-height:1.3;color:#6b626d}.task strong{font-size:14px;display:block}.task small{display:block;color:#847985;font-size:11px;margin-top:2px}.task input{width:19px;height:19px;accent-color:var(--pink)}.task.done{opacity:.52}.task.done strong{text-decoration:line-through}
-.task.hindi{background:var(--pink-bg);border-color:#ffd4db}.task.main{background:var(--science-bg);border-color:#e1d8ff}.task.ssc{background:var(--ssc-bg);border-color:#ffe0c4}.task.english{background:var(--english-bg);border-color:#ffe0cf}.task.kannada{background:var(--kannada-bg);border-color:#d5efd9}.task.maths{background:var(--math-bg);border-color:#d2efdf}.task.extra{background:#f5efff;border-color:#e5d8ff}.task.classes{background:var(--class-bg);border-color:#d5e4ff}.task.play{background:var(--play-bg);border-color:#f4e3aa}
-.side-card h3{margin:0 0 12px;font-size:16px}.progress-ring{width:110px;height:110px;border-radius:50%;margin:5px auto 13px;background:conic-gradient(#41a66d var(--p,0%),#eee9ec 0);display:grid;place-items:center}.progress-ring:after{content:"";width:78px;height:78px;border-radius:50%;background:#fff;grid-area:1/1}.progress-ring span{grid-area:1/1;z-index:1;font-weight:900;font-size:20px}.star-row{display:flex;justify-content:center;gap:7px;font-size:28px;margin:10px 0}.star-row span.off{filter:grayscale(1);opacity:.35}.side-list{list-style:none;padding:0;margin:0}.side-list li{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid #f0e8eb;font-size:13px}.side-list li:last-child{border-bottom:0}.note{margin-top:14px;background:#fff9e8;border:1px solid #f1dfaa;border-radius:16px;padding:14px;font-size:13px}.note strong{color:#765a16}
-.subjects{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.subject{border-radius:17px;padding:15px;border:1px solid var(--border);min-height:115px}.subject h3{margin:0 0 5px;font-size:15px}.subject p{margin:0;color:var(--muted);font-size:12px}.subject.math{background:var(--math-bg);border-color:#d2efdf}.subject.sci{background:var(--science-bg);border-color:#e1d8ff}.subject.hin{background:var(--pink-bg);border-color:#ffd4db}.subject.ssc{background:var(--ssc-bg);border-color:#ffe0c4}.subject.eng{background:var(--english-bg);border-color:#ffe0cf}.subject.kan{background:var(--kannada-bg);border-color:#d5efd9}.subject.comp{background:var(--computer-bg);border-color:#d5e5f4}
-
-.subject-filter{
-  background:#fff;border:1px solid var(--border);border-radius:20px;padding:14px;
-  box-shadow:var(--shadow);margin-top:8px
-}
-.subject-tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 7px}
-.subject-tab{
-  flex:0 0 auto;border:1px solid var(--border);background:#fff;border-radius:13px;
-  padding:9px 13px;font-size:13px;font-weight:800;color:var(--muted)
-}
-.subject-tab.selected{border:2px solid #7359b6;background:#f3efff;color:#60499c}
-.subject-status-head{
-  display:flex;justify-content:space-between;align-items:center;gap:10px;margin:15px 0 10px
-}
-.subject-status-head h3{margin:0;font-size:18px}
-.subject-status-count{font-size:12px;color:var(--muted);font-weight:700}
-.subject-status-bar{height:9px;background:#eee9ec;border-radius:999px;overflow:hidden;margin:8px 0 14px}
-.subject-status-fill{height:100%;width:0;background:#7359b6;border-radius:999px;transition:.25s}
-.subject-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:13px}
-.subject-stat{border-radius:13px;padding:11px;text-align:center;background:#faf7fb;border:1px solid #eee7f1}
-.subject-stat b{display:block;font-size:18px}
-.subject-stat span{font-size:11px;color:var(--muted)}
-.subject-task{
-  display:grid;grid-template-columns:30px 1fr 22px;gap:10px;align-items:center;
-  padding:11px;border-radius:12px;margin:7px 0;border:1px solid var(--border);background:#fff
-}
-.subject-task .task-date{font-size:11px;font-weight:800;color:#7b7180}
-.subject-task strong{font-size:13px;display:block}
-.subject-task small{font-size:11px;color:#8a7f89}
-.subject-task.done{opacity:.5}
-.subject-task.done strong{text-decoration:line-through}
-@media(max-width:600px){
- .subject-stats{grid-template-columns:repeat(3,1fr)}
- .subject-task{grid-template-columns:42px 1fr 22px}
-}
-
-.motivation{margin:22px 0 35px;text-align:center;border:1px solid #eadff0;background:linear-gradient(90deg,#fbf3ff,#fff8fb);border-radius:20px;padding:23px}.motivation blockquote{margin:5px auto;font:italic 25px Georgia,serif;max-width:700px;color:#69517f}.motivation p{margin:6px 0;color:var(--muted);font-size:13px}footer{text-align:center;color:var(--muted);font-size:12px;padding:0 0 30px}
-@media(max-width:850px){.summary,.subjects{grid-template-columns:1fr 1fr}.day-layout{grid-template-columns:1fr}.hero img{height:350px}}
-@media(max-width:600px){.container{width:min(100% - 16px,1120px)}nav{display:none}.logo{font-size:23px}.hero{margin-top:12px;border-radius:19px}.hero img{height:390px;object-position:58% center}.hero-copy{left:12px;right:12px;top:auto;bottom:12px;transform:none;max-width:none;padding:15px 17px}.hero-copy h1{font-size:31px}.hero-copy p{font-size:13px}.summary{grid-template-columns:1fr 1fr;gap:8px}.summary-card{padding:12px}.section-title{font-size:23px}.selected-date h2{font-size:19px}.task{grid-template-columns:70px 1fr 22px;padding:11px 8px}.task strong{font-size:13px}.subjects{grid-template-columns:1fr 1fr}}
-</style>
-</head>
-<body>
-<header><div class="container nav"><a class="logo" href="#top">⭐ <span>My Study Plan</span></a><nav>
-<button data-jump="top">Today</button><button data-jump="daily">Plan</button><button data-jump="subjects">Subjects</button><button data-jump="subject-status">Status</button><button data-jump="roadmap">Roadmap</button><button data-jump="about">About</button>
-</nav></div></header>
-
+:root{--ink:#30283a;--muted:#776f7b;--border:#eadfe4;--pink:#ef7188;--pink-bg:#fff0f3;--math-bg:#edf8f2;--sci-bg:#f3efff;--ssc-bg:#fff4e8;--eng-bg:#fff3e9;--extra-bg:#f5efff;--class-bg:#eef5ff;--play-bg:#fff8df;--shadow:0 10px 30px rgba(68,47,67,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fffafa,#fff 55%,#fff9fb)}
+.container{width:min(1120px,calc(100% - 28px));margin:auto}button,input{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:#fffdfdf2;backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{height:62px;display:flex;align-items:center;justify-content:space-between}.logo{font:italic 27px Georgia,serif;color:#403547;text-decoration:none}nav{display:flex;gap:5px}nav button{border:0;background:transparent;color:var(--muted);padding:8px 11px;border-radius:999px}nav button:hover{background:var(--pink-bg);color:var(--pink)}
+.hero{margin:18px 0;border:1px solid var(--border);border-radius:24px;overflow:hidden;background:#fff;box-shadow:var(--shadow);position:relative}.hero img{display:block;width:100%;height:350px;object-fit:cover}.hero-copy{position:absolute;left:28px;top:50%;transform:translateY(-50%);max-width:440px;background:#ffffffe8;padding:20px 23px;border-radius:19px;backdrop-filter:blur(8px)}.hero-copy h1{margin:0 0 7px;font:italic 41px Georgia,serif}.hero-copy p{margin:0;color:#665e69}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:24px}.summary-card{border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 7px 20px rgba(68,47,67,.05)}.summary-card h3{margin:0 0 5px;font-size:14px}.summary-card p{margin:0;color:var(--muted);font-size:12px}
+.pink{background:var(--pink-bg)}.gold{background:#fff8e2}.green{background:var(--math-bg)}.blue{background:#eef5ff}
+.section-title{display:flex;align-items:center;gap:10px;margin:29px 0 12px;font:italic 26px Georgia,serif}.section-title:after{content:"";height:1px;background:var(--border);flex:1}
+.day-picker,.subject-filter{background:#fff;border:1px solid var(--border);border-radius:20px;padding:14px;box-shadow:var(--shadow)}
+.picker-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:11px}.picker-actions{display:flex;gap:7px}.icon-btn{border:1px solid var(--border);background:#fff;border-radius:10px;width:37px;height:37px}.today-btn{border:1px solid #ff9dad;background:#fff1f4;color:#c5425a;border-radius:10px;padding:8px 12px;font-weight:800}
+.day-scroller,.subject-tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px}.day-btn{flex:0 0 76px;border:1px solid var(--border);background:#fff;border-radius:13px;padding:8px 6px;text-align:center;color:var(--muted)}.day-btn.selected{border:2px solid var(--pink);background:var(--pink-bg);color:#7d3949}.day-btn .m{font-size:10px;font-weight:700}.day-btn .n{font-size:21px;font-weight:900;line-height:1.05;color:var(--ink)}.day-btn .w{font-size:11px;font-weight:700}.day-btn.selected .n{color:var(--pink)}
+.selected-date{display:flex;justify-content:space-between;align-items:center;margin:16px 0 10px}.selected-date h2{margin:0;font-size:21px}.day-layout{display:grid;grid-template-columns:1.55fr .75fr;gap:15px}.plan-card,.side-card{background:#fff;border:1px solid var(--border);border-radius:19px;padding:16px;box-shadow:var(--shadow)}
+.task{display:grid;grid-template-columns:92px 1fr 22px;gap:10px;align-items:center;padding:11px 9px;border-radius:12px;margin:7px 0;border:1px solid transparent}.task .time{font-size:10px;font-weight:800;color:#6b626d}.task strong{font-size:13px;display:block}.task small{display:block;color:#847985;font-size:11px;margin-top:2px}.task input,.subject-task input{width:18px;height:18px;accent-color:var(--pink)}.task.done,.subject-task.done{opacity:.5}.task.done strong,.subject-task.done strong{text-decoration:line-through}
+.task.hindi{background:var(--pink-bg);border-color:#ffd4db}.task.main{background:var(--sci-bg);border-color:#e1d8ff}.task.ssc{background:var(--ssc-bg);border-color:#ffe0c4}.task.english{background:var(--eng-bg);border-color:#ffe0cf}.task.maths{background:var(--math-bg);border-color:#d2efdf}.task.extra{background:var(--extra-bg);border-color:#e5d8ff}.task.classes{background:var(--class-bg);border-color:#d5e4ff}.task.play{background:var(--play-bg);border-color:#f4e3aa}
+.side-card h3{margin:0 0 10px;font-size:15px}.progress-ring{width:105px;height:105px;border-radius:50%;margin:5px auto 12px;background:conic-gradient(#41a66d var(--p,0%),#eee9ec 0);display:grid;place-items:center}.progress-ring:after{content:"";width:75px;height:75px;border-radius:50%;background:#fff;grid-area:1/1}.progress-ring span{grid-area:1/1;z-index:1;font-weight:900}.star-row{display:flex;justify-content:center;gap:7px;font-size:27px;margin:9px}.star-row .off{filter:grayscale(1);opacity:.3}.side-list{list-style:none;padding:0;margin:0}.side-list li{padding:7px 0;border-bottom:1px solid #f0e8eb;font-size:12px}.side-list li:last-child{border:0}
+.subject-tabs{padding-bottom:8px}.subject-tab{flex:0 0 auto;border:1px solid var(--border);background:#fff;border-radius:12px;padding:8px 12px;font-size:12px;font-weight:800;color:var(--muted)}.subject-tab.selected{border:2px solid #7359b6;background:var(--sci-bg);color:#60499c}.subject-status-head{display:flex;justify-content:space-between;align-items:center;margin:13px 0 8px}.subject-status-head h3{margin:0}.subject-status-count{font-size:11px;color:var(--muted)}.subject-status-bar{height:8px;background:#eee9ec;border-radius:999px;overflow:hidden;margin-bottom:12px}.subject-status-fill{height:100%;width:0;background:#7359b6;border-radius:999px}.subject-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.subject-stat{padding:9px;border-radius:12px;text-align:center;background:#faf7fb;border:1px solid #eee7f1}.subject-stat b{display:block;font-size:17px}.subject-stat span{font-size:10px;color:var(--muted)}.subject-task{display:grid;grid-template-columns:68px 1fr 20px;gap:9px;align-items:center;padding:9px;border:1px solid var(--border);border-radius:11px;margin:6px 0}.subject-task .task-date{font-size:10px;font-weight:800;color:#7b7180}.subject-task strong{font-size:12px;display:block}.subject-task small{font-size:10px;color:#8a7f89}
+.note{margin-top:13px;background:#fff9e8;border:1px solid #f1dfaa;border-radius:15px;padding:12px;font-size:12px}.subjects{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.subject{border-radius:16px;padding:14px;border:1px solid var(--border);min-height:105px}.subject h3{margin:0 0 5px;font-size:14px}.subject p{margin:0;color:var(--muted);font-size:11px}.subject.math{background:var(--math-bg);border-color:#d2efdf}.subject.sci{background:var(--sci-bg);border-color:#e1d8ff}.subject.hin{background:var(--pink-bg);border-color:#ffd4db}.subject.ssc{background:var(--ssc-bg);border-color:#ffe0c4}.subject.eng{background:var(--eng-bg);border-color:#ffe0cf}.subject.comp{background:#eef5fb;border-color:#d5e5f4}.motivation{margin:22px 0 32px;text-align:center;border:1px solid #eadff0;background:linear-gradient(90deg,#fbf3ff,#fff8fb);border-radius:19px;padding:21px}.motivation blockquote{margin:4px auto;font:italic 23px Georgia,serif;color:#69517f}.motivation p{margin:5px;color:var(--muted);font-size:12px}footer{text-align:center;color:var(--muted);font-size:11px;padding-bottom:28px}
+@media(max-width:850px){.summary,.subjects{grid-template-columns:1fr 1fr}.day-layout{grid-template-columns:1fr}.hero img{height:330px}}
+@media(max-width:600px){.container{width:calc(100% - 16px)}nav{display:none}.logo{font-size:23px}.hero{margin-top:11px}.hero img{height:380px;object-position:58% center}.hero-copy{left:11px;right:11px;top:auto;bottom:11px;transform:none;max-width:none;padding:14px}.hero-copy h1{font-size:30px}.hero-copy p{font-size:12px}.summary{gap:7px}.summary-card{padding:11px}.section-title{font-size:22px}.task{grid-template-columns:69px 1fr 20px}.subjects{grid-template-columns:1fr 1fr}}
+</style></head><body>
+<header><div class="container nav"><a class="logo" href="#top">⭐ <span>My Study Plan</span></a><nav><button data-jump="top">Home</button><button data-jump="daily">Plan</button><button data-jump="subject-status">Status</button><button data-jump="subjects">Subjects</button><button data-jump="roadmap">Roadmap</button></nav></div></header>
 <main id="top" class="container">
-<section class="hero"><img src="assets/girl-cover.png" alt="Girl studying at a desk"><div class="hero-copy"><h1>Hi Superstar! ⭐</h1><p>Small steps every day lead to <strong class="spark">big results.</strong></p><p style="margin-top:10px">💗 Believe in yourself. You can do this!</p></div></section>
+<section class="hero"><img src="assets/girl-cover.png" alt="Girl studying"><div class="hero-copy"><h1>Hi Superstar! ⭐</h1><p>23 days. One clear plan. <strong style="color:var(--pink)">You can do this.</strong></p><p style="margin-top:8px">Understand → Practice → Recall → Test</p></div></section>
+<section class="summary"><div class="summary-card pink"><h3>📅 Aug 29 – Sep 20</h3><p>Every syllabus item is explicitly scheduled.</p></div><div class="summary-card gold"><h3>✍️ Hindi 2L</h3><p>7 literature + 13 grammar + reading + 3 writing formats</p></div><div class="summary-card green"><h3>🧮 Maths</h3><p>All 9 chapters + practice + tests</p></div><div class="summary-card blue"><h3>🔬 Science</h3><p>Physics + Chemistry + Biology</p></div></section>
 
-<section class="summary">
-<div class="summary-card pink"><h3>📅 Plan Period</h3><p><strong>Aug 29 – Sep 20</strong><br>23 days to grow, learn and shine!</p></div>
-<div class="summary-card gold"><h3>🎯 Today's Focus</h3><p>✓ Understand &nbsp; ✓ Practice<br>✓ Recall &nbsp; ✓ Improve</p></div>
-<div class="summary-card green"><h3>🏆 Main Goal</h3><p>Be ready and confident for all your exams!</p></div>
-<div class="summary-card blue"><h3>⭐ You Will Do It!</h3><p>Every effort today brings you closer to your dreams.</p></div>
-</section>
+<section id="daily"><h2 class="section-title">📅 Select a Day</h2><div class="day-picker"><div class="picker-top"><strong>Tap a date to see exactly what to study</strong><div class="picker-actions"><button class="icon-btn" id="prevBtn">‹</button><button class="today-btn" id="todayBtn">Today</button><button class="icon-btn" id="nextBtn">›</button></div></div><div class="day-scroller" id="dayScroller"></div></div>
+<div class="selected-date"><h2 id="selectedHeading">⭐ Plan</h2><span id="selectedCount" class="small"></span></div><div class="day-layout"><div class="plan-card" id="planCard"></div><aside>
+<div class="side-card"><h3>📈 Overall Progress</h3><div class="progress-ring" id="progressRing"><span id="progressPct">0%</span></div><p id="progressText" style="text-align:center;margin:0;color:var(--muted);font-size:12px"></p></div>
+<div class="side-card" style="margin-top:12px"><h3>⭐ Daily Stars</h3><div class="star-row" id="starRow"></div><p id="starText" style="text-align:center;margin:0;color:var(--muted);font-size:12px"></p></div>
+<div class="side-card" style="margin-top:12px"><h3>🔔 Fixed Routine</h3><ul class="side-list"><li>✍️ Hindi: 6–7 AM weekdays / 7–8 AM weekends</li><li>🏫 School: 7:30 AM–3:30 PM weekdays</li><li>🧮 Maths: every evening</li><li>❤️ Play: 7:30–8:30 PM</li><li>🍽️ Dinner: 8:30–9:00 PM</li><li>🎨💃 Sat/Sun: 4–7 PM</li></ul></div>
+</aside></div><div class="note">💡 <strong>Don't rush.</strong> A difficult chapter can take multiple sessions. Tick a task only when the listed work is actually done.</div></section>
 
-<section id="daily">
-<h2 class="section-title">📅 Select a Day</h2>
-<div class="day-picker"><div class="picker-top"><div class="picker-title">Choose your study day</div><div class="picker-actions"><button class="icon-btn" id="prevBtn">‹</button><button class="today-btn" id="todayBtn">Today</button><button class="icon-btn" id="nextBtn">›</button></div></div><div class="day-scroller" id="dayScroller"></div></div>
-<div class="selected-date"><h2 id="selectedHeading">⭐ Plan</h2><span class="small" id="selectedCount"></span></div>
-<div class="day-layout"><div class="plan-card" id="planCard"></div><aside>
-<div class="side-card"><h3>📈 Overall Progress</h3><div class="progress-ring" id="progressRing" style="--p:0%"><span id="progressPct">0%</span></div><p id="progressText" style="text-align:center;margin:0;color:var(--muted);font-size:13px">0 tasks completed</p></div>
-<div class="side-card" style="margin-top:14px"><h3>⭐ Daily Stars</h3><div class="star-row" id="starRow"></div><p id="starText" style="text-align:center;margin:0;color:var(--muted);font-size:13px"></p></div>
-<div class="side-card" style="margin-top:14px"><h3>🔔 Remember</h3><ul class="side-list"><li>✍️ Hindi every morning</li><li>🧮 Maths every evening</li><li>❤️ Play time: 7:30–8:30 PM</li><li>🍽️ Dinner: 8:30–9:00 PM</li><li>💗 Understanding is more important than speed.</li></ul></div>
-</aside></div>
-<div class="note">💡 <strong>Don't rush!</strong> You do NOT have to finish a chapter in one sitting.<br>Use this cycle: <strong>Understand → Practice → Recall → Improve</strong>.</div>
-</section>
+<section id="subject-status"><h2 class="section-title">📊 Check Progress by Subject</h2><div class="subject-filter"><div class="subject-tabs" id="subjectTabs"></div><div class="subject-status-head"><h3 id="subjectStatusTitle">Subject Status</h3><span id="subjectStatusCount" class="subject-status-count"></span></div><div class="subject-status-bar"><div class="subject-status-fill" id="subjectStatusFill"></div></div><div class="subject-stats"><div class="subject-stat"><b id="subDone">0</b><span>Done</span></div><div class="subject-stat"><b id="subTotal">0</b><span>Planned</span></div><div class="subject-stat"><b id="subPct">0%</b><span>Progress</span></div></div><div id="subjectTaskList"></div></div></section>
 
-<section id="subjects"><h2 class="section-title">🎨 Subject Colours</h2><div class="subjects">
-<div class="subject hin"><h3>✍️ Hindi</h3><p>Pink · Every morning · Writing + grammar + literature</p></div>
-<div class="subject math"><h3>🧮 Maths</h3><p>Green · Every evening · Concepts + examples + practice</p></div>
-<div class="subject sci"><h3>🔬 Science</h3><p>Purple · Physics + Chemistry + Biology</p></div>
-<div class="subject ssc"><h3>🌍 SSC</h3><p>Orange · History + Geography + Civics</p></div>
-<div class="subject eng"><h3>📖 English</h3><p>Peach · Literature + grammar + writing</p></div>
-<div class="subject kan"><h3>🟢 Kannada</h3><p>Green · Literature + grammar + writing</p></div>
-<div class="subject comp"><h3>💻 Computer</h3><p>Blue · Lowest priority before Sep 20</p></div>
-</div></section>
-
-
-<section id="subject-status">
-<h2 class="section-title">📊 Check by Subject</h2>
-<div class="subject-filter">
-  <div class="subject-tabs" id="subjectTabs"></div>
-  <div class="subject-status-head">
-    <h3 id="subjectStatusTitle">Subject Status</h3>
-    <span class="subject-status-count" id="subjectStatusCount"></span>
-  </div>
-  <div class="subject-status-bar"><div class="subject-status-fill" id="subjectStatusFill"></div></div>
-  <div class="subject-stats">
-    <div class="subject-stat"><b id="subDone">0</b><span>Done</span></div>
-    <div class="subject-stat"><b id="subTotal">0</b><span>Planned</span></div>
-    <div class="subject-stat"><b id="subPct">0%</b><span>Progress</span></div>
-  </div>
-  <div id="subjectTaskList"></div>
-</div>
-</section>
-
-<section id="roadmap"><h2 class="section-title">🌱 Roadmap</h2><div class="subjects">
-<div class="subject sci"><h3>Aug 29 – Sep 6</h3><p>🔥 Hardest first · Physics T3 → T2 · Maths 19,15,14,13</p></div>
-<div class="subject ssc"><h3>Sep 7 – Sep 11</h3><p>🧪 Chemistry · Maths 8,7,6 · English + SSC</p></div>
-<div class="subject kan"><h3>Sep 12 – Sep 16</h3><p>🌿 Finish Science first round · Maths 5,4 · English + SSC</p></div>
-<div class="subject hin"><h3>Sep 17 – Sep 20</h3><p>🎯 Consolidate · Science recall · Maths tests · SSC recall · Hindi writing</p></div>
-</div></section>
-
-<section id="about" class="motivation"><div style="font-size:25px">✨ ⭐ ✨</div><blockquote>“You don't have to be perfect. You just have to keep going.”</blockquote><p>One small step today. One more tomorrow. That's how you get there. 💪</p></section>
-</main>
-<footer>⭐ My Study Plan · Aug 29 – Sep 20 · Keep going, keep growing! 🌈</footer>
+<section id="subjects"><h2 class="section-title">🎨 Subject Colours</h2><div class="subjects"><div class="subject hin"><h3>✍️ Hindi 2L</h3><p>Pink · literature, grammar, reading, writing</p></div><div class="subject math"><h3>🧮 Maths</h3><p>Green · all 9 chapters</p></div><div class="subject sci"><h3>🔬 Science</h3><p>Purple · Physics, Chemistry, Biology</p></div><div class="subject ssc"><h3>🌍 SSC</h3><p>Orange · History, Civics, Geography</p></div><div class="subject eng"><h3>📖 English</h3><p>Peach · literature, grammar, writing</p></div><div class="subject comp"><h3>💻 Computer</h3><p>Blue · lower priority</p></div></div></section>
+<section id="roadmap"><h2 class="section-title">🌱 Roadmap</h2><div class="subjects"><div class="subject sci"><h3>Aug 29 – Sep 6</h3><p>🔥 Physics T3 → T2 → T1; hardest Maths; Geography; English prose.</p></div><div class="subject ssc"><h3>Sep 7 – Sep 13</h3><p>🧪 Chemistry T4 → T3 → T2; Maths 8 → 6; Civics; English poems/grammar.</p></div><div class="subject hin"><h3>Sep 14 – Sep 18</h3><p>🌿 Biology 4 chapters; Hindi consolidation; History; Maths mixed practice.</p></div><div class="subject eng"><h3>Sep 19 – Sep 20</h3><p>🎯 Full mocks, error correction and recall.</p></div></div></section>
+<section class="motivation"><div style="font-size:24px">✨ ⭐ ✨</div><blockquote>“You don't have to finish everything fast. You have to finish it properly.”</blockquote><p>One clear task at a time. Tick it. Celebrate it. Move to the next. 💪</p></section>
+</main><footer>⭐ My Study Plan · Aug 29 – Sep 20 · Hindi 2L · Kannada 3L</footer>
 
 <script>
-const DAYS = [{"date": "2026-08-29", "dow": "Sat", "hindi": "Patra format + write 1", "main": "Physics T3 Ch 2 — LEARN", "second": "SSC Geography — last chapter: LEARN", "maths": "Maths Ch 19 — 3D Shapes: concepts", "extra": "Physics T3 Ch 2 — continue + notes"}, {"date": "2026-08-30", "dow": "Sun", "hindi": "Anuched — structure + write 1", "main": "Physics T3 Ch 2 — questions / finish", "second": "SSC Geography — previous chapter", "maths": "Maths Ch 19 — exercises", "extra": "Physics T3 Ch 1 — start / revise"}, {"date": "2026-08-31", "dow": "Mon", "hindi": "Grammar + writing", "main": "Physics T3 Ch 1 — LEARN", "second": "English — difficult literature", "maths": "Maths Ch 15 — concepts + examples", "extra": ""}, {"date": "2026-09-01", "dow": "Tue", "hindi": "Patra writing", "main": "Physics T3 Ch 1 — examples / questions", "second": "SSC Geography — continue", "maths": "Maths Ch 15 — exercises", "extra": ""}, {"date": "2026-09-02", "dow": "Wed", "hindi": "Grammar", "main": "Physics T3 — Ch 1–2 recall / test", "second": "English — literature", "maths": "Maths Ch 14 — concepts", "extra": ""}, {"date": "2026-09-03", "dow": "Thu", "hindi": "Vigyapan writing", "main": "Physics T2 Ch 2 — LEARN", "second": "SSC Geography — continue", "maths": "Maths Ch 14 — examples / exercises", "extra": ""}, {"date": "2026-09-04", "dow": "Fri", "hindi": "Anuched writing", "main": "Physics T2 Ch 2 — questions", "second": "English — literature", "maths": "Maths Ch 13 — concepts", "extra": ""}, {"date": "2026-09-05", "dow": "Sat", "hindi": "Literature + writing", "main": "Physics T2 Ch 1 — LEARN", "second": "SSC Civics — later chapter", "maths": "Maths Ch 13 — exercises", "extra": "Physics T2 — revision + questions"}, {"date": "2026-09-06", "dow": "Sun", "hindi": "Grammar + Patra", "main": "Physics T2 Ch 1 — questions / recall", "second": "SSC Civics — previous chapter", "maths": "Maths Ch 8 — concepts + examples", "extra": "Physics T2 + T3 — test / revision"}, {"date": "2026-09-07", "dow": "Mon", "hindi": "Anuched", "main": "Chemistry T4 Ch 1 — LEARN", "second": "English — literature", "maths": "Maths Ch 8 — exercises", "extra": ""}, {"date": "2026-09-08", "dow": "Tue", "hindi": "Grammar + writing", "main": "Chemistry T4 Ch 1 — questions", "second": "SSC Civics — continue", "maths": "Maths Ch 7 — concepts", "extra": ""}, {"date": "2026-09-09", "dow": "Wed", "hindi": "Patra", "main": "Chemistry T3 Ch 3 — LEARN", "second": "English — poems", "maths": "Maths Ch 7 — exercises", "extra": ""}, {"date": "2026-09-10", "dow": "Thu", "hindi": "Vigyapan", "main": "Chemistry T3 Ch 3 — questions", "second": "SSC Civics — continue", "maths": "Maths Ch 6 — concepts", "extra": ""}, {"date": "2026-09-11", "dow": "Fri", "hindi": "Anuched + grammar", "main": "Chemistry T3 Ch 2 — LEARN", "second": "English — literature", "maths": "Maths Ch 6 — exercises", "extra": ""}, {"date": "2026-09-12", "dow": "Sat", "hindi": "Literature", "main": "Chemistry T3 Ch 2 — questions", "second": "SSC — Geography", "maths": "Maths Ch 5 — concepts", "extra": "Chemistry T4 + T3 — revision"}, {"date": "2026-09-13", "dow": "Sun", "hindi": "Patra + Anuched", "main": "Chemistry T3 Ch 1 — LEARN", "second": "English — Julius Caesar", "maths": "Maths Ch 5 — exercises", "extra": "Chemistry — questions / revision"}, {"date": "2026-09-14", "dow": "Mon", "hindi": "Grammar", "main": "Chemistry T3 Ch 1 — questions", "second": "SSC — Geography", "maths": "Maths Ch 4 — concepts", "extra": ""}, {"date": "2026-09-15", "dow": "Tue", "hindi": "Writing", "main": "Chemistry T2 Ch 1 — LEARN + questions", "second": "English — The Tempest", "maths": "Maths Ch 4 — exercises", "extra": ""}, {"date": "2026-09-16", "dow": "Wed", "hindi": "Grammar", "main": "Chemistry — full recall + weak areas", "second": "SSC — History later chapters", "maths": "Maths Ch 4–5 — revision", "extra": ""}, {"date": "2026-09-17", "dow": "Thu", "hindi": "Anuched + Patra", "main": "Biology — hardest chapter: LEARN", "second": "SSC — History", "maths": "Maths Ch 13–14 — revision", "extra": ""}, {"date": "2026-09-18", "dow": "Fri", "hindi": "Literature + writing", "main": "Biology — second difficult chapter: LEARN", "second": "SSC — Civics", "maths": "Maths Ch 15 + 19 — revision", "extra": ""}, {"date": "2026-09-19", "dow": "Sat", "hindi": "Full writing practice", "main": "Biology — next chapters / continue difficult areas", "second": "SSC — History + Civics recall", "maths": "Maths — mixed test", "extra": "Science — weak chapters"}, {"date": "2026-09-20", "dow": "Sun", "hindi": "Grammar + full writing task", "main": "Science — Physics + Chemistry + Biology recall", "second": "SSC — Geography + English recall", "maths": "Maths — full revision + mistakes", "extra": "Weak-area hour"}];
-const STORAGE="studyPlan_v3"; let state=JSON.parse(localStorage.getItem(STORAGE)||"{}");
-let selected=localStorage.getItem("studyPlanSelectedDay");
-const valid=d=>DAYS.some(x=>x.date===d);
-if(!valid(selected)){const iso=new Date().toISOString().slice(0,10);selected=valid(iso)?iso:DAYS[0].date}
-function save(){localStorage.setItem(STORAGE,JSON.stringify(state))}
-function key(d,id){return d+"::"+id}
-function done(d,id){return !!state[key(d,id)]}
-function tasks(day){
- const weekend=day.dow==="Sat"||day.dow==="Sun";
- const a=[
-  {id:"hindi",cls:"hindi",icon:"✍️",time:weekend?"7:00–8:00 AM":"6:00–7:00 AM",subject:"Hindi",text:day.hindi},
-  {id:"main",cls:"main",icon:"🔬",time:weekend?"9:00–10:30 AM":"4:15–5:45 PM",subject:"Main",text:day.main},
-  {id:"second",cls:"ssc",icon:"📚",time:weekend?"10:45–12:00 PM":"6:00–7:15 PM",subject:"Second",text:day.second},
-  {id:"maths1",cls:"maths",icon:"🧮",time:weekend?"1:00–2:15 PM":"9:00–10:00 PM",subject:"Maths",text:day.maths}
- ];
- if(day.extra)a.push({id:"extra",cls:"extra",icon:"⭐",time:"2:45–3:45 PM",subject:"Extra",text:day.extra});
- if(weekend)a.push({id:"classes",cls:"classes",icon:"🎨",time:"4:00–7:00 PM",subject:"Classes",text:"Drawing / Dancing"});
- a.push({id:"play",cls:"play",icon:"🛝",time:"7:30–8:30 PM",subject:"Play Time",text:"Have fun and relax"});
- a.push({id:"maths2",cls:"maths",icon:"🧮",time:"9:00–10:00 PM",subject:"Maths",text:"Practice / revision"});
- return a;
-}
-function renderPicker(){
- document.getElementById("dayScroller").innerHTML=DAYS.map(d=>{
-  const dt=new Date(d.date+"T12:00:00");
-  return `<button class="day-btn ${d.date===selected?"selected":""}" data-date="${d.date}"><div class="m">${dt.toLocaleString("en-US",{month:"short"})}</div><div class="n">${dt.getDate()}</div><div class="w">${d.dow}</div></button>`
- }).join("");
- document.querySelectorAll(".day-btn").forEach(b=>b.onclick=()=>selectDay(b.dataset.date,true));
- const active=document.querySelector(".day-btn.selected"); if(active)active.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"});
-}
-function selectDay(d,smooth=false){if(!valid(d))return;selected=d;localStorage.setItem("studyPlanSelectedDay",d);render();if(smooth)document.getElementById("daily").scrollIntoView({behavior:"smooth",block:"start"})}
-function renderPlan(){
- const day=DAYS.find(x=>x.date===selected),dt=new Date(day.date+"T12:00:00");
- document.getElementById("selectedHeading").textContent="⭐ Plan — "+dt.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"});
- const ts=tasks(day),n=ts.filter(t=>done(day.date,t.id)).length;
- document.getElementById("selectedCount").textContent=`${n} / ${ts.length} done`;
- document.getElementById("planCard").innerHTML=ts.map(t=>`<label class="task ${t.cls} ${done(day.date,t.id)?"done":""}"><span class="time">${t.time}</span><span><strong>${t.icon} ${t.subject}</strong><small>${t.text}</small></span><input type="checkbox" ${done(day.date,t.id)?"checked":""} data-id="${t.id}" aria-label="Complete ${t.subject}"></label>`).join("");
- document.querySelectorAll("#planCard input").forEach(cb=>cb.onchange=()=>{state[key(day.date,cb.dataset.id)]=cb.checked;save();render()});
-}
-function renderProgress(){
- let total=0,n=0; DAYS.forEach(d=>{const ts=tasks(d);total+=ts.length;n+=ts.filter(t=>done(d.date,t.id)).length});
- const pct=total?Math.round(n/total*100):0;
- document.getElementById("progressPct").textContent=pct+"%";document.getElementById("progressRing").style.setProperty("--p",pct+"%");document.getElementById("progressText").textContent=`${n} of ${total} tasks completed`;
- const ts=tasks(DAYS.find(d=>d.date===selected)),dn=ts.filter(t=>done(selected,t.id)).length;
- const stars=dn>=ts.length?3:dn>=Math.ceil(ts.length*.67)?2:dn>=Math.ceil(ts.length*.34)?1:0;
- document.getElementById("starRow").innerHTML=[0,1,2].map(i=>`<span class="${i<stars?"":"off"}">★</span>`).join("");
- document.getElementById("starText").textContent=stars===3?"Amazing! 3 stars today! 🌟":`${stars} star${stars===1?"":"s"} earned today — keep going!`;
-}
-
-const SUBJECTS = [
-  {id:"all",name:"All",icon:"✨",cls:""},
-  {id:"hindi",name:"Hindi",icon:"✍️",cls:"hin"},
-  {id:"maths",name:"Maths",icon:"🧮",cls:"math"},
-  {id:"science",name:"Science",icon:"🔬",cls:"sci"},
-  {id:"ssc",name:"SSC",icon:"🌍",cls:"ssc"},
-  {id:"english",name:"English",icon:"📖",cls:"eng"},
-  {id:"kannada",name:"Kannada",icon:"🟢",cls:"kan"},
-  {id:"computer",name:"Computer",icon:"💻",cls:"comp"}
-];
-let selectedSubject = localStorage.getItem("studyPlanSelectedSubject") || "all";
-
-function subjectForText(text, role) {
-  const t = (text || "").toLowerCase();
-  if (role === "hindi") return "hindi";
-  if (role === "maths") return "maths";
-  if (/physics|chemistry|biology|science/.test(t)) return "science";
-  if (/english|julius caesar|tempest|poem|literature/.test(t)) return "english";
-  if (/ssc|geography|civics|history/.test(t)) return "ssc";
-  if (/kannada/.test(t)) return "kannada";
-  if (/computer/.test(t)) return "computer";
-  return "all";
-}
-
-function subjectTasks(subject) {
-  const out = [];
-  DAYS.forEach(day => {
-    const ts = tasks(day);
-    ts.forEach(t => {
-      let sub = subjectForText(t.text, t.id);
-      if (t.id === "hindi") sub = "hindi";
-      if (t.id === "maths1" || t.id === "maths2") sub = "maths";
-      if (t.id === "classes" || t.id === "play") return;
-      if (subject === "all" || sub === subject) {
-        out.push({date:day.date, dow:day.dow, id:t.id, subject:sub, text:t.text, role:t.subject, time:t.time});
-      }
-    });
-  });
-  return out;
-}
-
-function renderSubjectStatus() {
-  const tabs = document.getElementById("subjectTabs");
-  tabs.innerHTML = SUBJECTS.map(su =>
-    `<button class="subject-tab ${su.id===selectedSubject?"selected":""}" data-subject="${su.id}">${su.icon} ${su.name}</button>`
-  ).join("");
-  tabs.querySelectorAll(".subject-tab").forEach(b => b.onclick = () => {
-    selectedSubject = b.dataset.subject;
-    localStorage.setItem("studyPlanSelectedSubject", selectedSubject);
-    renderSubjectStatus();
-  });
-
-  const su = SUBJECTS.find(x=>x.id===selectedSubject);
-  const list = subjectTasks(selectedSubject);
-  const n = list.filter(x=>done(x.date,x.id)).length;
-  const pct = list.length ? Math.round(n/list.length*100) : 0;
-
-  document.getElementById("subjectStatusTitle").textContent = `${su.icon} ${su.name} Status`;
-  document.getElementById("subjectStatusCount").textContent = `${n} of ${list.length} planned tasks`;
-  document.getElementById("subjectStatusFill").style.width = pct + "%";
-  document.getElementById("subDone").textContent = n;
-  document.getElementById("subTotal").textContent = list.length;
-  document.getElementById("subPct").textContent = pct + "%";
-
-  document.getElementById("subjectTaskList").innerHTML = list.length ? list.map(x => {
-    const dt = new Date(x.date+"T12:00:00");
-    const label = dt.toLocaleDateString("en-US",{month:"short",day:"numeric"});
-    return `<label class="subject-task ${done(x.date,x.id)?"done":""}">
-      <span class="task-date">${label}</span>
-      <span><strong>${x.role}</strong><small>${x.text} · ${x.time}</small></span>
-      <input type="checkbox" ${done(x.date,x.id)?"checked":""} data-sdate="${x.date}" data-sid="${x.id}">
-    </label>`;
-  }).join("") : `<p style="color:var(--muted);font-size:13px;margin:8px 0">No planned tasks for this subject in this period.</p>`;
-
-  document.querySelectorAll("#subjectTaskList input").forEach(cb => {
-    cb.onchange = () => {
-      state[key(cb.dataset.sdate,cb.dataset.sid)] = cb.checked;
-      save();
-      render();
-    };
-  });
-}
-
+const DAYS=[{"date": "2026-08-29", "dow": "Sat", "hindi": "Hindi 2L • Itne Unche Utho — read + understand + textbook Q&A", "main": "Physics Theme 3 • Ch 2 — Energy: learn concepts + notes", "second": "SSC Geography • Ch 5 Elements of Weather and Climate — learn + key terms", "maths": "Maths Ch 19 • Three-Dimensional Shapes — concepts + worked examples", "extra": "Physics T3 Ch 2 — numericals / questions + 10-min recall"}, {"date": "2026-08-30", "dow": "Sun", "hindi": "Hindi 2L • Nyayamantri — read + understand + Q&A", "main": "Physics Theme 3 • Ch 2 — finish questions + self-test", "second": "SSC Geography • Ch 4 Atmosphere — learn + key terms", "maths": "Maths Ch 19 — exercise practice + mistakes", "extra": "Hindi 2L • Itne Unche Utho + Nyayamantri oral recall"}, {"date": "2026-08-31", "dow": "Mon", "hindi": "Hindi 2L • Bodh — read + understand + Q&A", "main": "Physics Theme 3 • Ch 1 — Energy: difficult concepts / remaining chapter work", "second": "English • L-4 The Fight — read + understand + Q&A", "maths": "Maths Ch 15 • Properties of Triangles — concepts + examples", "extra": ""}, {"date": "2026-09-01", "dow": "Tue", "hindi": "Hindi 2L • Sangya — concept + examples + exercises", "main": "Physics Theme 3 • Ch 1 — questions + diagrams / recall", "second": "SSC Geography • Ch 3 The Changing Face of the Earth — learn + key terms", "maths": "Maths Ch 15 — exercises + corrections", "extra": ""}, {"date": "2026-09-02", "dow": "Wed", "hindi": "Hindi 2L • Sarvnaam — concept + examples + exercises", "main": "Physics Theme 3 • Ch 1–2 — combined recall + short test", "second": "English • L-3 The Green Morning — read + Q&A", "maths": "Maths Ch 14 • Properties of Parallel Lines — concepts + examples", "extra": ""}, {"date": "2026-09-03", "dow": "Thu", "hindi": "Hindi 2L • Kriya — concept + examples + exercises", "main": "Physics Theme 2 • Force and Pressure: Motion — learn first half + notes", "second": "SSC Geography • Ch 2 Interior of the Earth — learn + diagrams/terms", "maths": "Maths Ch 14 — exercises + corrections", "extra": ""}, {"date": "2026-09-04", "dow": "Fri", "hindi": "Hindi 2L • Visheshan — concept + examples + exercises", "main": "Physics Theme 2 • Force and Pressure: Motion — finish + questions", "second": "English • L-2 To truly understand a Rainbow — read + Q&A", "maths": "Maths Ch 13 • Lines and Angles — concepts + examples", "extra": ""}, {"date": "2026-09-05", "dow": "Sat", "hindi": "Hindi 2L • Ling, Vachan evam Karak — concepts + examples", "main": "Physics Theme 1 • Physical Quantities and Measurement — learn + units + numericals", "second": "SSC Geography • Ch 1 Our Environment — learn + key terms", "maths": "Maths Ch 13 — exercises + corrections", "extra": "Physics T1 — practice + recall"}, {"date": "2026-09-06", "dow": "Sun", "hindi": "Hindi 2L • Paryayvachi + Vilom Shabd — learn list + written practice", "main": "Physics Theme 1 — questions + recall; then full Physics T1–T3 weak areas", "second": "English • L-1 The MCC — read + Q&A", "maths": "Maths Ch 8 • Ratio and Proportion — concepts + exercise 8A", "extra": "Physics — mini test across all 3 themes"}, {"date": "2026-09-07", "dow": "Mon", "hindi": "Hindi 2L • Anek Shabdon Ke Liye Ek Shabd — learn + written practice", "main": "Chemistry Theme 4 • Atomic Structure / Atoms and Molecules — learn up to Valency", "second": "English • Coromandel Fishers — poem meaning + Q&A", "maths": "Maths Ch 8 — finish till exercise 8A + corrections", "extra": ""}, {"date": "2026-09-08", "dow": "Tue", "hindi": "Hindi 2L • Anek Akarathak Shabd — learn + written practice", "main": "Chemistry Theme 4 — valency + questions + recall", "second": "SSC Civics • Ch 4 Role Played by Gender — learn + answer practice", "maths": "Maths Ch 7 • Linear Equations in One Variable — concepts + examples", "extra": ""}, {"date": "2026-09-09", "dow": "Wed", "hindi": "Hindi 2L • Upsarg + Pratyay — concepts + examples + exercises", "main": "Chemistry Theme 3 • Elements, Compounds and Mixtures — Unit 3", "second": "English • Maps — poem meaning + Q&A", "maths": "Maths Ch 7 — equation practice + corrections", "extra": ""}, {"date": "2026-09-10", "dow": "Thu", "hindi": "Hindi 2L • Muhavare (1–30) — meanings + sentence practice", "main": "Chemistry Theme 3 — Unit 2: concepts + examples + questions", "second": "SSC Civics • Ch 3 State Government — learn + answer practice", "maths": "Maths Ch 6 • Algebraic Expressions — concepts + examples", "extra": ""}, {"date": "2026-09-11", "dow": "Fri", "hindi": "Hindi 2L • Lokoktiyan (1–15) — meanings + usage + written practice", "main": "Chemistry Theme 3 — Unit 1: concepts + questions + recall", "second": "English • Break, Break, Break — poem meaning + Q&A", "maths": "Maths Ch 6 — exercises + corrections", "extra": ""}, {"date": "2026-09-12", "dow": "Sat", "hindi": "Hindi 2L • Writing — Vigyapan Lekhan: format + 2 complete answers", "main": "Chemistry Theme 2 • Physical and Chemical Changes — learn + examples", "second": "SSC Civics • Ch 2 Institutional Representation of Democracy — learn + Q&A", "maths": "Maths Ch 5 • Exponents — concepts + exercises", "extra": "Chemistry T2 — questions + recall"}, {"date": "2026-09-13", "dow": "Sun", "hindi": "Hindi 2L • Writing — Anuched Lekhan: structure + 2 complete answers", "main": "Chemistry Theme 2 — questions + full Chemistry T2–T4 recall", "second": "English • Grammar: Countable/Uncountable Nouns + Indefinite Pronouns + Modals", "maths": "Maths Ch 4 • Rational Numbers — concepts + exercises", "extra": "Chemistry mini test + error review"}, {"date": "2026-09-14", "dow": "Mon", "hindi": "Hindi 2L • Writing — Anaupcharik Patra Lekhan: format + 2 complete letters", "main": "Biology • Ch 4 Respiration — learn + diagrams/process + Q&A", "second": "SSC Civics • Ch 1 Democracy — learn + Q&A", "maths": "Maths Ch 5 — mixed practice + mistakes", "extra": ""}, {"date": "2026-09-15", "dow": "Tue", "hindi": "Hindi 2L • Reading — Apathith Gadyansh: 2 passages + timed practice", "main": "Biology • Ch 3 Photosynthesis — learn + diagram/process + Q&A", "second": "English • Grammar: Simple Present/Past/Continuous + Present/Past Participles", "maths": "Maths Ch 4 — mixed practice + mistakes", "extra": ""}, {"date": "2026-09-16", "dow": "Wed", "hindi": "Hindi 2L • Literature revision — Itne Unche Utho + Nyayamantri + Bodh + Anokha Puraskar", "main": "Biology • Ch 2 Nervous System — learn + labelled diagram + Q&A", "second": "SSC History • Ch 4 The Mughal Empire — learn + timeline", "maths": "Maths Ch 19 + 15 — mixed test + corrections", "extra": ""}, {"date": "2026-09-17", "dow": "Thu", "hindi": "Hindi 2L • Literature revision — Mein Ruthoon Maa Mana Tu + Anyaya Ka Virodh + Mahilaon Ka Apna Bank", "main": "Biology • Ch 1 Tissue — learn + types/diagram + Q&A", "second": "SSC History • Ch 3 The Delhi Sultanate (1206–1526 CE) — learn + timeline", "maths": "Maths Ch 14 + 13 — mixed test + corrections", "extra": ""}, {"date": "2026-09-18", "dow": "Fri", "hindi": "Hindi 2L • Grammar revision — Sangya/Sarvnaam/Kriya/Visheshan + Ling/Vachan/Karak", "main": "Biology • Ch 1–4 — combined recall + diagrams + questions", "second": "SSC History • Ch 2 New Kings and Kingdoms — learn + timeline", "maths": "Maths Ch 8 + 7 + 6 — mixed test + corrections", "extra": ""}, {"date": "2026-09-19", "dow": "Sat", "hindi": "Hindi 2L • Grammar revision — Paryayvachi, Vilom, Ek Shabd, Anek Akarathak, Upsarg, Pratyay, Muhavare, Lokoktiyan", "main": "Science • Full Physics + Chemistry + Biology — mock test + analyse mistakes", "second": "SSC History • Ch 1 Where, When and How – Medieval Period + full SSC recall", "maths": "Maths • Full mixed test: Ch 4,5,6,7,8,13,14,15,19", "extra": "Hindi 2L — timed writing: Vigyapan + Anuched + Patra"}, {"date": "2026-09-20", "dow": "Sun", "hindi": "Hindi 2L • FULL mock: reading + literature + grammar + all 3 writing formats", "main": "Science • Final first-round revision — weakest chapters + diagrams + questions", "second": "English • Full literature + grammar + writing recall; timed practice", "maths": "Maths • Full test review + formula/concept sheet + redo mistakes", "extra": "SSC • Full History + Civics + Geography recall + weak areas"}],STORE="studyPlan_v4";let state=JSON.parse(localStorage.getItem(STORE)||"{}"),selected=localStorage.getItem("selectedDay_v4");
+const valid=d=>DAYS.some(x=>x.date===d);if(!valid(selected)){let x=new Date().toISOString().slice(0,10);selected=valid(x)?x:DAYS[0].date}
+const key=(d,id)=>d+"::"+id,done=(d,id)=>!!state[key(d,id)],save=()=>localStorage.setItem(STORE,JSON.stringify(state));
+function subjectFromText(t){let x=(t||"").toLowerCase();if(x.includes("hindi"))return"hindi";if(x.includes("maths"))return"maths";if(/physics|chemistry|biology|science/.test(x))return"science";if(/english|the mcc|rainbow|green morning|the fight|coromandel|maps|break, break|julius|tempest/.test(x))return"english";if(/ssc|geography|civics|history|mughal|sultanate|medieval/.test(x))return"ssc";if(/computer|excel|html/.test(x))return"computer";return"other"}
+function tasks(day){let w=day.dow==="Sat"||day.dow==="Sun",a=[{id:"hindi",cls:"hindi",icon:"✍️",time:w?"7:00–8:00 AM":"6:00–7:00 AM",subject:"Hindi 2L",text:day.hindi,sub:"hindi"},{id:"main",cls:"main",icon:"🔬",time:w?"9:00–10:30 AM":"4:15–5:45 PM",subject:"Main",text:day.main,sub:subjectFromText(day.main)},{id:"second",cls:"ssc",icon:"📚",time:w?"10:45–12:00 PM":"6:00–7:15 PM",subject:"Second",text:day.second,sub:subjectFromText(day.second)},{id:"maths",cls:"maths",icon:"🧮",time:w?"1:00–2:15 PM":"9:00–10:00 PM",subject:"Maths",text:day.maths,sub:"maths"}];if(day.extra)a.push({id:"extra",cls:"extra",icon:"⭐",time:"2:45–3:45 PM",subject:"Extra",text:day.extra,sub:subjectFromText(day.extra)});if(w)a.push({id:"classes",cls:"classes",icon:"🎨",time:"4:00–7:00 PM",subject:"Classes",text:"Drawing / Dancing",sub:"classes"});a.push({id:"play",cls:"play",icon:"🛝",time:"7:30–8:30 PM",subject:"Play Time",text:"Have fun and relax",sub:"play"});if(w)a.push({id:"mathsNight",cls:"maths",icon:"🧮",time:"9:00–10:00 PM",subject:"Maths",text:"Practice / revision",sub:"maths"});return a}
+function renderPicker(){let el=document.getElementById("dayScroller");el.innerHTML=DAYS.map(d=>{let dt=new Date(d.date+"T12:00:00");return `<button class="day-btn ${d.date===selected?"selected":""}" data-date="${d.date}"><div class="m">${dt.toLocaleString("en-US",{month:"short"})}</div><div class="n">${dt.getDate()}</div><div class="w">${d.dow}</div></button>`}).join("");document.querySelectorAll(".day-btn").forEach(b=>b.onclick=()=>selectDay(b.dataset.date,true));let a=document.querySelector(".day-btn.selected");if(a)a.scrollIntoView({behavior:"smooth",inline:"center",block:"nearest"})}
+function selectDay(d,s){if(!valid(d))return;selected=d;localStorage.setItem("selectedDay_v4",d);render();if(s)document.getElementById("daily").scrollIntoView({behavior:"smooth",block:"start"})}
+function renderPlan(){let d=DAYS.find(x=>x.date===selected),dt=new Date(d.date+"T12:00:00"),ts=tasks(d),n=ts.filter(t=>done(d.date,t.id)).length;document.getElementById("selectedHeading").textContent="⭐ Plan — "+dt.toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"});document.getElementById("selectedCount").textContent=`${n} / ${ts.length} done`;document.getElementById("planCard").innerHTML=ts.map(t=>`<label class="task ${t.cls} ${done(d.date,t.id)?"done":""}"><span class="time">${t.time}</span><span><strong>${t.icon} ${t.subject}</strong><small>${t.text}</small></span><input type="checkbox" ${done(d.date,t.id)?"checked":""} data-id="${t.id}"></label>`).join("");document.querySelectorAll("#planCard input").forEach(c=>c.onchange=()=>{state[key(d.date,c.dataset.id)]=c.checked;save();render()})}
+function renderProgress(){let total=0,n=0;DAYS.forEach(d=>{let ts=tasks(d);total+=ts.length;n+=ts.filter(t=>done(d.date,t.id)).length});let p=total?Math.round(n/total*100):0;document.getElementById("progressPct").textContent=p+"%";document.getElementById("progressRing").style.setProperty("--p",p+"%");document.getElementById("progressText").textContent=`${n} of ${total} tasks completed`;let ts=tasks(DAYS.find(d=>d.date===selected)),dn=ts.filter(t=>done(selected,t.id)).length,st=dn>=ts.length?3:dn>=Math.ceil(ts.length*.67)?2:dn>=Math.ceil(ts.length*.34)?1:0;document.getElementById("starRow").innerHTML=[0,1,2].map(i=>`<span class="${i<st?"":"off"}">★</span>`).join("");document.getElementById("starText").textContent=st===3?"Amazing! 3 stars today! 🌟":`${st} star${st===1?"":"s"} earned today — keep going!`}
+const SUBJECTS=[["all","✨","All"],["hindi","✍️","Hindi 2L"],["maths","🧮","Maths"],["science","🔬","Science"],["ssc","🌍","SSC"],["english","📖","English"],["computer","💻","Computer"]];let selectedSubject=localStorage.getItem("selectedSubject_v4")||"all";
+function subjectTasks(s){let o=[];DAYS.forEach(d=>tasks(d).forEach(t=>{if(["classes","play"].includes(t.id))return;if(s==="all"||t.sub===s)o.push({date:d.date,id:t.id,role:t.subject,text:t.text,time:t.time})}));return o}
+function renderSubjectStatus(){document.getElementById("subjectTabs").innerHTML=SUBJECTS.map(s=>`<button class="subject-tab ${s[0]===selectedSubject?"selected":""}" data-s="${s[0]}">${s[1]} ${s[2]}</button>`).join("");document.querySelectorAll(".subject-tab").forEach(b=>b.onclick=()=>{selectedSubject=b.dataset.s;localStorage.setItem("selectedSubject_v4",selectedSubject);renderSubjectStatus()});let su=SUBJECTS.find(s=>s[0]===selectedSubject),l=subjectTasks(selectedSubject),n=l.filter(x=>done(x.date,x.id)).length,p=l.length?Math.round(n/l.length*100):0;document.getElementById("subjectStatusTitle").textContent=`${su[1]} ${su[2]} Status`;document.getElementById("subjectStatusCount").textContent=`${n} of ${l.length} planned tasks`;document.getElementById("subjectStatusFill").style.width=p+"%";document.getElementById("subDone").textContent=n;document.getElementById("subTotal").textContent=l.length;document.getElementById("subPct").textContent=p+"%";document.getElementById("subjectTaskList").innerHTML=l.length?l.map(x=>{let dt=new Date(x.date+"T12:00:00"),lab=dt.toLocaleDateString("en-US",{month:"short",day:"numeric"});return `<label class="subject-task ${done(x.date,x.id)?"done":""}"><span class="task-date">${lab}</span><span><strong>${x.role}</strong><small>${x.text} · ${x.time}</small></span><input type="checkbox" ${done(x.date,x.id)?"checked":""} data-sdate="${x.date}" data-sid="${x.id}"></label>`}).join(""):"<p style='color:var(--muted);font-size:12px'>No planned tasks.</p>";document.querySelectorAll("#subjectTaskList input").forEach(c=>c.onchange=()=>{state[key(c.dataset.sdate,c.dataset.sid)]=c.checked;save();render()})}
 function render(){renderPicker();renderPlan();renderProgress();renderSubjectStatus()}
-document.getElementById("prevBtn").onclick=()=>{const i=DAYS.findIndex(d=>d.date===selected);if(i>0)selectDay(DAYS[i-1].date)};
-document.getElementById("nextBtn").onclick=()=>{const i=DAYS.findIndex(d=>d.date===selected);if(i<DAYS.length-1)selectDay(DAYS[i+1].date)};
-document.getElementById("todayBtn").onclick=()=>{const iso=new Date().toISOString().slice(0,10);selectDay(valid(iso)?iso:DAYS[0].date,true)};
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.jump).scrollIntoView({behavior:"smooth"}));
-render();
-</script>
-</body>
-</html>
+document.getElementById("prevBtn").onclick=()=>{let i=DAYS.findIndex(d=>d.date===selected);if(i>0)selectDay(DAYS[i-1].date)};
+document.getElementById("nextBtn").onclick=()=>{let i=DAYS.findIndex(d=>d.date===selected);if(i<DAYS.length-1)selectDay(DAYS[i+1].date)};
+document.getElementById("todayBtn").onclick=()=>{let x=new Date().toISOString().slice(0,10);selectDay(valid(x)?x:DAYS[0].date,true)};
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.jump).scrollIntoView({behavior:"smooth"}));render();
+</script></body></html>
